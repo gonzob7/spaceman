@@ -3,7 +3,7 @@
 #Spaceman
 
 import time
-from colorama import Fore, Back, Style
+from termcolor import colored, cprint
 import sys
 
 #This printFlush function makes it possible to make scrolling text, which makes the program a little more interactive:)
