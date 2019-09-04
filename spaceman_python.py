@@ -14,6 +14,6 @@ def printFlush(text):
         time.sleep(0.075)
 
 def welcome_msg():
-    printFlush("Welcome to Spaceman!\n")
+    printFlush(colored("Welcome to Spaceman!\n","cyan", attrs=['bold']))
 
 welcome_msg()
