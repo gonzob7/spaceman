@@ -3,6 +3,7 @@
 #Spaceman
 
 import time
+from random_word import RandomWords
 from termcolor import colored, cprint
 import sys
 
