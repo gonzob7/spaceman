@@ -4,3 +4,6 @@
 
 import time
 from colorama import Fore, Back, Style
+
+def welcome_msg():
+    print("Welcome to Spaceman!")
