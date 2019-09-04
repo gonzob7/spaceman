@@ -4,6 +4,16 @@
 
 import time
 from colorama import Fore, Back, Style
+import sys
+
+#This printFlush function makes it possible to make scrolling text, which makes the program a little more interactive:)
+def printFlush(text):
+    for c in text:
+        print(c, end='')
+        sys.stdout.flush()
+        time.sleep(0.075)
 
 def welcome_msg():
-    print("Welcome to Spaceman!")
+    printFlush("Welcome to Spaceman!\n")
+
+welcome_msg()
