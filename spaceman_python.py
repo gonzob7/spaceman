@@ -1,4 +1,14 @@
+from termcolor import colored, cprint
 import random
+import time
+import sys
+
+#This printFlush function makes it possible to make scrolling text, which makes the program a little more interactive:)
+def printFlush(text):
+    for c in text:
+        print(c, end='')
+        sys.stdout.flush()
+        time.sleep(0.075)
 
 def load_word():
     '''
@@ -67,7 +77,7 @@ def spaceman(secret_word):
 
 
     #TODO: show the player information about the game according to the project spec
-
+    print("")
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
