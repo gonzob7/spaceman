@@ -21,7 +21,7 @@ def load_word():
     words_list = f.readlines()
     f.close()
 
-    #words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
+    words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
     secret_word = random.choice(words_list)
     return secret_word
 
@@ -77,7 +77,13 @@ def spaceman(secret_word):
 
 
     #TODO: show the player information about the game according to the project spec
-    print("")
+    print("----------------------------------------")
+    printFlush(colored("Welcome to spaceman!\n","cyan"))
+    printFlush(colored("The secret word contains: ","green"))
+    secret_word_length = len(secret_word)
+    printFlush(f'{secret_word_length} letters \n')
+    printFlush(colored("You have 7 incorrect guesses, please enter one letter per round \n","red"))
+    print("----------------------------------------")
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
