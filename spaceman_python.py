@@ -63,6 +63,13 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
+    if len(guess) > 1:
+        printFlush("Error: Only one letter allowed per guess, try again!\n")
+    else:
+        if guess.lower() in secret_word:
+            printFlush("Awesome!\n")
+        else:
+            printFlush("Wrong!\n")
     pass
 
 
@@ -85,14 +92,8 @@ def spaceman(secret_word):
     printFlush(colored("You have 7 incorrect guesses, please enter one letter per round \n","red"))
     print("----------------------------------------")
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    letter = input("Enter a letter: ")
-    if len(letter) > 1:
-        printFlush("Error: Only one letter allowed per guess, try again!\n")
-    else:
-        if letter.lower() in secret_word:
-            printFlush("Awesome!\n")
-        else:
-            printFlush("Wrong!\n")
+    guess = input("Enter a letter: ")
+    is_guess_in_word(guess, secret_word)
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
 
     #TODO: show the guessed word so far
