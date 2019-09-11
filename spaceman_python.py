@@ -3,12 +3,13 @@ import random
 import time
 import sys
 
+
 #This printFlush function makes it possible to make scrolling text, which makes the program a little more interactive:)
 def printFlush(text):
     for c in text:
         print(c, end='')
         sys.stdout.flush()
-        time.sleep(0.075)
+        time.sleep(0.005)
 
 def load_word():
     '''
@@ -20,10 +21,10 @@ def load_word():
     f = open('words.txt', 'r')
     words_list = f.readlines()
     f.close()
-
     words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
     secret_word = random.choice(words_list)
     return secret_word
+
 
 def is_word_guessed(secret_word, letters_guessed):
     '''
@@ -35,6 +36,7 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
+
     pass
 
 def get_guessed_word(secret_word, letters_guessed):
@@ -47,10 +49,19 @@ def get_guessed_word(secret_word, letters_guessed):
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
 
+
+    empty = []
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-
+    for letter in letters_guessed:
+        for secret_word_letter in secret_word:
+            if letter == secret_word_letter:
+                empty.append(letter)
+            else:
+                empty.append('_')
+    #string = empty.join
+    print(empty)
+    #return "".join(empty)
     pass
-
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -67,37 +78,44 @@ def is_guess_in_word(guess, secret_word):
         printFlush("Error: Only one letter allowed per guess, try again!\n")
     else:
         if guess.lower() in secret_word:
-            printFlush("Awesome!\n")
+            return True
         else:
-            printFlush("Wrong!\n")
-    pass
-
-
-
+            pass
+    return False
 
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
     Args:
-      secret_word (string): the secret word to guess.
+      secret_word (s
+      ptring): the secret word to guess.
     '''
-
-
+    print(secret_word)
+    attempts_left = 7
+    solved = False
     #TODO: show the player information about the game according to the project spec
-    print("----------------------------------------")
     printFlush(colored("Welcome to spaceman!\n","cyan"))
     printFlush(colored("The secret word contains: ","green"))
     secret_word_length = len(secret_word)
     printFlush(f'{secret_word_length} letters \n')
     printFlush(colored("You have 7 incorrect guesses, please enter one letter per round \n","red"))
-    print("----------------------------------------")
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    guess = input("Enter a letter: ")
-    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-    is_guess_in_word(guess, secret_word)
-    #TODO: show the guessed word so far
+    letters_guessed = []
+    while attempts_left > 0 and not solved:
+        guess = input("Enter a letter: ")
 
-    #TODO: check if the game has been won or lost
+        #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+        if is_guess_in_word(guess, secret_word):
+            printFlush("Letter in secret word!\n")
+
+        else:
+            printFlush("Wrong!\n")
+
+        letters_guessed.append(guess)
+
+        #TODO: show the guessed word so far
+        print(get_guessed_word(secret_word,letters_guessed))
+        #TODO: check if the game has been won or lost
 
 
 
