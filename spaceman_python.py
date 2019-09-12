@@ -76,11 +76,10 @@ def is_guess_in_word(guess, secret_word):
 
     if len(guess) > 1:
         printFlush("Error: Only one letter allowed per guess, try again!\n")
+    elif guess.lower() in secret_word:
+        return True
     else:
-        if guess.lower() in secret_word:
-            return True
-        else:
-            pass
+        pass
     return False
 
 def spaceman(secret_word):
@@ -108,13 +107,14 @@ def spaceman(secret_word):
 
         #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         if is_guess_in_word(guess, secret_word):
-            printFlush("Letter in secret word!\n")
+            printFlush(colored("Letter in secret word!\n","cyan"))
+            print('----------------------------------')
 
         else:
             printFlush("Wrong!\n")
             attempts_left -= 1
             printFlush(f"{attempts_left} attempts left!\n")
-
+            print('----------------------------------')
 
         letters_guessed.extend(guess)
 
