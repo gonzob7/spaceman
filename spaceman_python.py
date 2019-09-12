@@ -90,7 +90,7 @@ def spaceman(secret_word):
       secret_word (s
       ptring): the secret word to guess.
     '''
-    print(secret_word)
+    #print(secret_word)
     attempts_left = 7
     solved = False
 
