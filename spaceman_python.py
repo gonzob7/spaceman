@@ -36,7 +36,7 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-
+    return set(letters_guessed).issuperset(set(secret_word))
     pass
 
 def get_guessed_word(secret_word, letters_guessed):
@@ -52,15 +52,15 @@ def get_guessed_word(secret_word, letters_guessed):
 
     empty = []
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-    for letter in letters_guessed:
-        for secret_word_letter in secret_word:
-            if letter == secret_word_letter:
-                empty.append(letter)
-            else:
-                empty.append('_')
+
+    for letter in secret_word:
+        if letter in letters_guessed:
+            empty.append(letter)
+        else:
+            empty.append("_")
     #string = empty.join
-    print(empty)
-    #return "".join(empty)
+    #print(empty)
+    return " ".join(empty)
     pass
 
 def is_guess_in_word(guess, secret_word):
@@ -93,6 +93,7 @@ def spaceman(secret_word):
     print(secret_word)
     attempts_left = 7
     solved = False
+
     #TODO: show the player information about the game according to the project spec
     printFlush(colored("Welcome to spaceman!\n","cyan"))
     printFlush(colored("The secret word contains: ","green"))
@@ -104,18 +105,27 @@ def spaceman(secret_word):
     while attempts_left > 0 and not solved:
         guess = input("Enter a letter: ")
 
+
         #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         if is_guess_in_word(guess, secret_word):
             printFlush("Letter in secret word!\n")
 
         else:
             printFlush("Wrong!\n")
+            attempts_left -= 1
+            printFlush(f"{attempts_left} attempts left!\n")
 
-        letters_guessed.append(guess)
+
+        letters_guessed.extend(guess)
 
         #TODO: show the guessed word so far
         print(get_guessed_word(secret_word,letters_guessed))
         #TODO: check if the game has been won or lost
+        if is_word_guessed(secret_word, letters_guessed):
+            printFlush(colored("\nCongrats!!!! You win\n\n","green",attrs = ["bold","blink"]))
+            break
+    else:
+        print("Game Over")
 
 
 
