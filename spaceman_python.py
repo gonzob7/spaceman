@@ -125,7 +125,8 @@ def spaceman(secret_word):
             printFlush(colored("\nCongrats!!!! You win\n\n","green",attrs = ["bold","blink"]))
             break
     else:
-        print("Game Over")
+        printFlush(colored("\nGame Over:(\n\n",'red', attrs = ['blink','bold']))
+
 
 
 
