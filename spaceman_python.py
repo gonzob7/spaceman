@@ -130,8 +130,13 @@ def spaceman(secret_word):
 
 
 
+#TEST FUNCTIONS
+def test_is_guess_in_word():
+    assert is_guess_in_word('a', 'animal') == True, "GUESSED LETTER ISNT IN SECRET WORD"
+    assert is_guess_in_word('l', 'animal') == True, "GUESSED LETTER ISNT IN SECRET WORD"
 
-
+#Run Tests
+test_is_guess_in_word()
 
 #These function calls that will start the game
 secret_word = load_word()
