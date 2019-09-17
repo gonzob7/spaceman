@@ -141,6 +141,7 @@ def test_is_word_guessed():
 
 def test_get_guessed_word():
     assert get_guessed_word('programming', ['a','g','c','i','m']) == '_ _ _ g _ a m m i _ g'
+    assert get_guessed_word('gaming', ['g','c','i','m']) == 'g _ m i _ g'
 #Run Tests
 test_is_guess_in_word()
 test_is_word_guessed()
