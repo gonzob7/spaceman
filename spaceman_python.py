@@ -135,9 +135,12 @@ def test_is_guess_in_word():
     assert is_guess_in_word('a', 'animal') == True, "GUESSED LETTER ISNT IN SECRET WORD"
     assert is_guess_in_word('l', 'animal') == True, "GUESSED LETTER ISNT IN SECRET WORD"
 
+def test_is_word_guessed():
+    assert is_word_guessed('cat', ['c','a','t']) == True, 'HAVENT GUESSED WORD'
+    assert is_word_guessed('doggo', ['d','o','g']) == True, 'HAVENT GUESSED WORD'
 #Run Tests
 test_is_guess_in_word()
-
+test_is_word_guessed()
 #These function calls that will start the game
 secret_word = load_word()
 spaceman(secret_word)
